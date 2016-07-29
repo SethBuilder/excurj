@@ -1,0 +1,464 @@
+.jumbotron {
+
+    background: no-repeat fixed;
+    background-size: cover;
+    margin-bottom: 0;
+    color: white;
+
+}
+
+#index-jumbotron {
+    height: 490px;
+    margin-left: 0;
+    margin-right: 0;
+    
+    background-size: cover;
+
+}
+
+#about-jumbotron {
+    height: 500px;
+    margin-left: 0;
+    margin-right: 0;
+    background-image: url("../images/bk5.png");
+    background-size: cover;
+
+}
+
+#profile-jumbotron {
+    height: 22vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#popularCityTitle {
+    color: black;
+}
+
+#city-title {
+    top: 10vh;
+    left: 2vw;
+    position: absolute;
+    font-size: x-large;
+    font-family: "Raleway", sans-serif;
+    text-decoration: none;
+}
+
+#city-title a {
+    text-decoration: none;
+    color: white;
+}
+
+.jumbotron #container {
+    position: relative;
+    
+    z-index: 99;
+    overflow: hidden;
+     height: 440px;
+    background: #edeae8;
+    
+
+}
+
+.jumbotron h1 {
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #FFFFFF;
+}
+
+.about h1 {
+    font-size: 40px;
+    font-family: source-serif-pro sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #FFFFFF;
+    margin: auto;
+}
+
+#cityUsersTable {
+    column-width: 100px;
+}
+
+.about p {
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: source-serif-pro sans-serif;
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+
+.formboxsignup {
+
+    width: 250px;
+    height: inherit;
+    border: solid;
+    border-width: 1px;
+    margin: auto;
+    margin-bottom: 50px;
+
+}
+
+.formboxlogin {
+
+    width: 250px;
+    height: inherit;
+    border: solid;
+    border-width: 1px;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+}
+
+.center-element {
+    width: 10vw;
+    height: 10vw;
+
+    position: absolute;
+    top: 22vw;
+    transform: translate(-50%, -50%);
+
+    left: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+
+    z-index: 10;
+}
+
+@media (max-width: 1000px) {
+
+    .center-element{
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+.btn-wrap-text {
+    white-space: normal;
+}
+
+.justified-text {
+    text-align: justify;
+    margin: 2%;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: large;
+}
+
+.filter-ul {
+    height: 200px;
+    overflow-y: auto
+}
+
+.filter-ul li {
+    list-style-type: none;
+}
+
+#homePageSearchBar {
+    width: 425px;
+    height: 200px;
+
+    position: absolute;
+    top: 20%;
+    transform: translate(-50%);
+
+    left: 50%;
+        margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.profile-body {
+    padding: 0 2% 5% 2%;
+
+    margin-top: 0;
+    border-top: solid;
+}
+
+#reviewText {
+    width: 100%;
+    height: 15vh;
+    overflow: auto;
+    background-clip: border-box;
+    box-sizing: border-box;
+    border: solid grey;
+}
+
+.review-star {
+    font-size: 1.5em;
+}
+
+
+
+.learn-more {
+    background-color: #f7f7f7;
+    padding-top: 0%;
+    height: 250px
+}
+
+.learn-more-about {
+    background-color: #f7f7f7;
+    height: 160px
+}
+
+.learn-more h3 {
+    font-family: 'Shift', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.learn-more-about h3 {
+    font-family: 'Shift', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.learn-more a {
+    color: #FCFCFC;
+}
+
+.neighborhood-guides {
+    background-color: #efefef;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+h1 {
+    font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: 400;
+    padding: 5px 5px 5px 5px;
+}
+
+p {
+    font-family: source-serif-pro sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    margin-left: 8px;
+
+}
+
+footer {
+
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #efefef;
+    color: #393c3d;
+    text-align: center;
+    font-family: source-serif-pro sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.about section .header {
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #000000;
+
+}
+
+.learn-more #container .row {
+
+    margin-top: -25px;
+
+}
+
+.learn-more #container .row .col-md-4 a {
+    color: #333232;
+}
+
+.jumbotron #container section {
+    clear: left;
+    float: left;
+    width: 480px;
+
+}
+
+.about #container section {
+    clear: left;
+    float: left;
+    width: 450px;
+    background-color: black;
+    margin-top: 10px;
+}
+
+.about #container .header {
+    clear: left;
+    float: left;
+    width: 590px;
+    margin-left: -20px;
+    background-color: #000000;
+}
+
+#navbar, .navbar-header {
+    background-color: aliceblue;
+    color: #333232;
+    padding-right: 2%;
+}
+
+#navbar-brand {
+    font-family: "Chelsea Market", sans-serif;
+    color: #333232;
+    font-size: x-large;
+}
+
+#navbar-brand:hover {
+    background-color: #333232;
+    color: aliceblue;
+}
+
+#navbar > ul > li > a {
+    color: #333232;
+}
+
+#navbar > ul > li > a:hover {
+
+    background-color: #333232;
+    color: aliceblue;
+
+}
+
+#navbar > ul {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.homePageList {
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+.profile-second-row {
+    padding-top: 4%;
+}
+
+#hobbiesLanguages {
+    padding-top: 16%;
+}
+
+#hobbiesLanguages li {
+    font-size: larger;
+}
+
+/*sign up page selectors*/
+
+.reglabel {
+    margin-top: 10px;
+    margin-left: 25px;
+    font-family: 'Shift', sans-serif;
+}
+
+.reglabel.submitbutton {
+    margin-bottom: 20px;
+}
+
+.reglabel.tab {
+    margin-left: 120px;
+}
+
+.reglabel.lang {
+    margin-left: 140px;
+}
+
+.textfields {
+    margin-left: 25px;
+}
+
+.headlabel {
+    font-family: 'Shift', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.formboxprofile {
+
+    width: 500px;
+    height: inherit;
+    border: solid;
+    border-width: 1px;
+    margin: auto;
+    margin-bottom: 50px;
+    padding-left: 10px;
+}
+
+/*navbar search field selector*/
+.input-group {
+
+    margin-top: 8px;
+
+}
+
+.center-content {
+    text-align: center;
+}
+
+.justified-text {
+    text-align: justify;
+    margin: 2%;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: large;
+}
+
+.hobby-language {
+    text-decoration: underline;
+<<<<<<< HEAD
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (max-width : 1000px) {
+.learn-more {
+    background-color: #f7f7f7;
+    padding-top: 2%;
+    height: auto;
+    padding-bottom: 10%
+    }
+
+    .learn-more-about {
+    background-color: #f7f7f7;
+    height: auto;
+    padding-bottom: 10%
+}
+
+}
+
+#map{
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+video {
+  position: absolute;
+  
+  /* Horizontally center*/
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* Could do vertial centering too, depending upon your requirements:
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  But in practise I noticed just `top: 0;` fulfills our expectations pretty well (obviously will vary from video to video)
+  */
+  top: 0;
+}
+
+#overlay {
+  position: absolute;
+  top: 0; right: 0; left: 0; bottom: 0;
+  
+  /*background: rgba(0,0,0,0.5);*/
+}

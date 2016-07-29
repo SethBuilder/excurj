@@ -1,0 +1,48 @@
+{% extends "baseTemplate.html" %}
+{% block content %}
+
+<!--jumbotron section-->
+<div class="jumbotron about" id="about-jumbotron">
+    <div class="container">
+        <section class="header">
+            <h1>Find someone to show you around.</h1>
+        </section>
+        <section>
+            <p>excurj is an online community where people can show visitors around their cities and towns.</p>
+        </section>
+
+    </div>
+</div>
+
+    <div class="learn-more-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Find a guide</h3>
+            <p>Why settle for being a tourist if you can experience the place as a local and meet new friends.</p>
+            {% if status == 0 %}
+            <p><a href={% url 'registration_register' %} style="color:rgba(0,0,0,1.00)">Plan your trip with excurj</a></p>
+            {% elif status == 1 %}
+            <p><a href={% url 'createprofile' %} style="color:rgba(0,0,0,1.00)">Plan your trip with excurj</a></p>
+            {% elif status == 2 %}
+            <p><a href={% url 'index' %} style="color:rgba(0,0,0,1.00)">Plan your trip with excurj</a></p>
+            {% endif %}
+
+          </div>
+          
+          <div class="col-md-6">
+            <h3>Become a guide</h3>
+            <p>No one knows your city better than you, so why not show visitors what's fun and interesting in your town.</p>
+            {% if status == 0 %}
+            <p><a href={% url 'registration_register' %} style="color:rgba(0,0,0,1.00)">Start making friends from all over the world!</a></p>
+            {% elif status == 1 %}
+            <p><a href={% url 'createprofile' %} style="color:rgba(0,0,0,1.00)">Start making friends from all over the world!</a></p>
+            {% elif status == 2 %}
+            <p><a href={% url 'index' %} style="color:rgba(0,0,0,1.00)">Start making friends from all over the world!</a></p>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock content %}

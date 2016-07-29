@@ -1,0 +1,106 @@
+{% extends "baseTemplate.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<section>
+    <br>
+    <br>
+    
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-12">
+                {% if cityOnly %}
+                <h1>Looking for a city to visit? You searched for: <strong>{{ query }}</strong></h1>
+                {% else %}
+                <h1>You searched for: <strong>{{ query }}</strong></h1>
+                {% endif %}
+            </div>
+        </div>    
+        
+        <div class="row">
+            <div class="col-lg-4">
+                <form action="#" method="GET">
+                        {% if cityOnly %}
+                        <input type="text" class="form-control" name="city" placeholder="{{ searchText }}" width="100%">
+                        {% else %}
+                        <input type="text" class="form-control" name="q" placeholder="{{ searchText }}">
+                        {% endif %}
+                </form>
+            </div>
+        </div>
+        
+        {% if cityOnly %}
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Cities</h1> 
+                {% if cities %}
+                <table class="table table-striped">
+                    {% for city in cities %}
+                        <tr><td><a href="{% url 'city' city.slug %}">{{ city.name }}</a></td></tr>
+                    {% endfor %} 
+                </table>
+                {% else %}
+                    <p>No city was found.</p>
+                {% endif %}
+            </div>
+        </div>
+                
+        {% else %}
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Cities</h1> 
+                {% if cities %}
+                <table class="table table-striped">
+                    {% for city in cities %}
+                    <tr><td><a href="{% url 'city' city.slug %}">{{ city.name }}</a></td></tr>
+                {% endfor %} 
+                </table>
+                {% else %}
+                <p>No city was found.</p>
+                {% endif %}
+            </div>
+        
+            <div id="cityUsers" class="col-md-6">
+                <h1>Users</h1>
+                {% if users %}
+                <table class="table table-striped">
+                    {% for user in users %}
+                        <tr>
+                            <td>
+                                <img src="{% static 'images/maleProfile1.jpg' %}" width="40" height="40">
+                                <a href="{% url 'user' user.profile.slug %}"
+                                style="color:rgba(0,0,200,1.00)"
+                                class="homePageList">{{ user.first_name }} {{ user.last_name }}</a>
+                                {% for i in user.profile.get_range_average %}
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                {% endfor %}
+                            </td>
+
+                            <td>
+                                <p>
+                                    {% if user.profile.hobbies.all %}
+                                    Hobbies:
+                                {% endif %}
+                                    {% for hobby in user.profile.hobbies.all %}
+                                        {{ hobby.hobby }}
+                                    {% endfor %}
+                                </p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                <p>No user was found.</p>
+                {% endif %}
+            </div>
+        
+        {% endif %}
+        
+    </div>
+    
+</section>
+
+{% endblock content %}

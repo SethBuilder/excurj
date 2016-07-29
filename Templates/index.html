@@ -1,0 +1,135 @@
+{% extends "baseTemplate.html" %} {% block content %}
+{% load staticfiles %}
+
+<!--Jumbotron section of the home page-->
+<div class="jumbotron" id="index-jumbotron">
+    <div id="container">
+        <video autoplay muted loop>
+            <source src="{% static 'videos/fun.mp4' %}" type="video/mp4">
+        </video>
+  <div id="overlay"></div>
+        <section id="homePageSearchBar">
+            <form action="{% url 'search' %}" method="get">
+                <div class="form-group">
+
+                        {% if user.is_authenticated and firstname_of_logged_user%}
+                        <h1 class="text-center" id="extraglow">{{firstname_of_logged_user | title}}! where do you want to go?</h1>
+                        <h4 class="text-center" id="extraglow2">Excurj. is a community where locals show visitors around their cities to make new friendships.</h4>
+                        <!--else show generic greeting-->
+                        {%else%}
+                        <h1 class="text-center" id="extraglow">where do you want to go?</h1>
+                        <h4 class="text-center" id="extraglow2">Excurj. is a community where locals show visitors around their cities to make new friendships.</h4>
+
+                        {% endif %}
+
+                        <!--search field-->
+                        <input type="text" class="form-control input-lg" id="searchBoxGlow" name="city" placeholder="Search Cities">
+
+                        <!--script to auto complete location-->
+                        <script>
+
+                            function initMap() {
+        
+
+                            var defaultBounds = new google.maps.LatLngBounds(
+                            new google.maps.LatLng(-90, 91), new google.maps.LatLng(-180, 80));
+
+                          var options = {
+                            types: ['(cities)'],
+                            bounds: defaultBounds
+                          };
+
+                          var input = document.getElementById('searchBoxGlow');
+                          
+
+                          var autocomplete = new google.maps.places.Autocomplete(input, options);
+                          }
+
+                    </script>
+
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfS_V4jHXS_jVYa1k2w9VY52r0pMrL8g&callback=initMap&libraries=places"
+                    async defer></script>
+
+                </div>
+                <!--show two buttons: "Find a Guide" and "Become a Guide"-->
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="submit" class="btn btn-default btn-lg btn-block">Find a Guide</button>
+                    </div>
+                    <div class="col-xs-6">
+                        {% if status == 0 %}<!--if user is not logged in, direct to sign up page-->
+                        <a class="btn btn-default btn-lg btn-block" href="{% url 'registration_register' %}" role="button">Become a Guide</a>
+
+                        {% elif status == 1 %}<!--if user is logged in but hasn't created a profile, direct to create profile page-->
+                        <a class="btn btn-default btn-lg btn-block" href="{% url 'createprofile' %}" role="button">Become a Guide</a>
+
+                        {% elif status == 2 %}<!--if user is logged in and created a profile, direct to edit profile page to specify his city-->
+                        <a class="btn btn-default btn-lg btn-block" href="{% url 'updateprofile' %}" role="button">Become a Guide</a>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+
+<!--Super Stars section-->
+<div class="learn-more">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Super Stars</h3>
+                <!--if there are users in database, pull their data-->
+                {% if users %}
+                    <ul>
+                        <!--traverse users, pull first name and link it to profile. Also pull city, country and avg rating-->
+                        {% for user_profile in users %}
+                            <li><p><a href="{% url 'user' user_profile.slug %}"
+                                        style="color:rgba(0,0,200,1.00)"
+                                        class="homePageList">{{ user_profile.user.first_name }}</a>
+                                <span class="homePageList">from</span>
+                                <a href="city/{{ user_profile.city.slug }}" style="color:rgba(0,0,200,1.00)"
+                                    class="homePageList">
+                                    {{ user_profile.city.name }}</a>,
+                                <span class="homePageList">{{ user_profile.city.country }}.</span>
+                                {% for i in user_profile.get_range_average %}
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                {% endfor %}
+                            </p></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>no users to show</p>
+                {% endif %}
+            </div>
+
+            <!--Popular Cities section-->         
+            <div class="col-md-6">
+
+                <!--link title with popular cities map page-->
+                <h3><a id="popularCityTitle" href="{% url 'cityloc' %}">Popular Cities</a></h3> 
+
+                <!--if there are cities, pull their names, link to matching profile pages and pull the number of guides in each city-->
+                {% if cities %}
+                <ul>
+                    {% for city in cities %}
+                        <li>
+                            <p class="homePageList"><a href="{% url 'city' city.slug %}" style="color:rgba(0,0,200,1.00)"
+                                                        class="homePageList">{{ city }}</a> has {{ city.total }}
+                                people!
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <p>no cities to show</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

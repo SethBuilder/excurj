@@ -1,0 +1,50 @@
+{% extends "baseTemplate.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<br />
+<br />
+<br />
+<div class="formboxprofile">
+	<h1 class="headlabel">A Bit About Yourself!</h1>
+        <form method="post" action="?next=/" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                	<label class="reglabel">First Name:</label>
+                	<label class="reglabel tab">Last Name:</label><br>
+
+	                 {{ user_form.first_name|add_class:"input-md textfields" }}
+	                 {{ user_form.first_name.errors }}
+
+	                 
+	                 {{ user_form.last_name|add_class:"input-md textfields" }}
+	                 {{ user_form.last_name.errors }}<br>
+
+	                 <label class="reglabel">Profile Picture: </label><br>
+	                {{ profile_form.profilepic|add_class:"input-md textfields" }}
+	                {{ profile_form.profilepic.errors }}<br>
+
+	                <label class="reglabel">City: </label><br>
+	                {{ profile_form.city|add_class:"input-md textfields" }}
+	                {{ profile_form.city.errors }}<br>
+
+	                <label class="reglabel">Hobbies: </label>
+	                <label class="reglabel lang">Languages: </label><br>
+
+	                {{ profile_form.hobbies|add_class:"input-md textfields" }}
+	                {{ profile_form.hobbies.errors }}
+	                
+	                
+	                {{ profile_form.languages|add_class:"input-md textfields" }}
+	                {{ profile_form.languages.errors }}<br>
+	               
+
+	                <input type="submit" value="Submit" class="btn btn-default btn-lg reglabel submitbutton"/>
+                <!--
+                 {{ user_form.as_p }}
+            	 {{ profile_form.as_p }}-->
+        </form>    	
+</div>
+                
+        
+{% endblock %}

@@ -1,0 +1,93 @@
+{% load staticfiles %}
+{% load inbox %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excurj.</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'CSS/main.css' %}"/>
+
+    <link href='https://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:700' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
+
+    <script type="text/javascript" src="{% static 'JS/profileRating.js' %}"></script>
+
+    
+
+    
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="navbar-brand" href="{% url 'index' %}">Excurj.</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                {% if status == 2 %}
+                    <li><a href="{% url 'user' slug_of_logged_user %}" class="text-center">Profile</a></li>
+                    <li><a href="{{ HTTP_HOST }}/messages/" class="text-center">Messages</a></li>
+                {% elif status == 1 %}
+                    <li><a href="{{ HTTP_HOST }}/messages/" class="text-center">Messages ({% inbox_count %})</a></li>
+                {% endif %}
+                <li><a href="{% url 'about' %}" class="text-center">About</a></li>
+                <li><a href="{% url 'cityloc' %}" class="text-center">Popular Cities</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if status == 2 %}
+                    <li><a href="{% url 'updateprofile' %}" class="pull-right">Edit Profile</a></li>
+                    <li><a href="{% url 'auth_logout' %}?next=/logout/" class="pull-right">Log Out</a></li>
+                {% elif status == 1 %}
+                    <li><a href="{% url 'createprofile' %}" class="pull-right">Create Profile</a></li>
+                    <li><a href="{% url 'auth_logout' %}?next=/logout/" class="pull-right">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'auth_login' %}" class="pull-right">Log in</a></li>
+                    <li><a href="{% url 'registration_register' %}" class="pull-right">Sign Up</a></li>
+                {% endif %}
+                <li>
+                    <div class="input-group">
+                        <form action="{% url 'search' %}" method="get">
+                            <input type="text" class="form-control" name="q" placeholder="Search Cities and People"/>
+                        </form>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+{% block content %}{% endblock content %}
+
+<div>
+    <footer>Copyrights 2016 by excurj.com. Made with 100% recycled pixels.</footer>
+</div>  
+
+<script type="text/javascript" src="{% static 'JS/main.js' %}"></script>
+
+</body>
+</html>

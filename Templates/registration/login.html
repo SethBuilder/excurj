@@ -1,0 +1,31 @@
+{% extends "baseTemplate.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<br />
+<br />
+<div class="formboxlogin">
+<h1 class="headlabel">Login</h1>
+        <form method="post" action=".">
+                {% csrf_token %}
+
+
+            		<label class="reglabel">User Name:</label><br>
+	                 {{ form.username|add_class:"input-md textfields" }}
+	                 {{ form.username.errors }}<br>
+
+	                 
+
+	                <label class="reglabel">Password: </label><br>
+	                {{ form.password|add_class:"input-md textfields" }}
+	                {{ form.password.errors }}<br>
+
+
+	                <input type="submit" value="Log in" class="btn btn-default btn-lg reglabel submitbutton"/>
+
+                	<input type="hidden" name="next" value="{{ next }}" />
+        </form>
+
+        <p>Not  a member? <a href="{% url 'registration_register' %}">Sign Up</a>!</p>
+</div>
+{% endblock content %}

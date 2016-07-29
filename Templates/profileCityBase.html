@@ -1,0 +1,38 @@
+{% extends "baseTemplate.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+    {% if user.city %}
+
+        <!-- Could not find any other way to insert a background image to the jumbotron without mixing concerns -->
+        <div class="jumbotron" id="profile-jumbotron" style="background-image: url(' {{ user.city.image.url }} ')">
+
+        <div class="container" id="city-title">
+            <a href="{% url 'city' user.city.slug %}"> {{ user.city }}</a>
+        </div>
+
+    {% else %}
+
+        <!-- Could not find any other way to insert a background image to the jumbotron without mixing concerns -->
+        <div class="jumbotron" id="profile-jumbotron" style="background-image: url(' {{ city.image.url }} ')">
+
+        <div class="container" id="city-title">
+            <a href="{% url 'city' city.slug %}"> {{ city.name }}</a>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% block profile_picture %}
+{% endblock %}
+
+<div class="profile-body">
+
+    {% block profile_body %}
+    {% endblock %}
+
+</div>
+
+{% endblock %}
